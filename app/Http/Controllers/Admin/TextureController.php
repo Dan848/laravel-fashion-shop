@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Brand;
-use App\Http\Requests\StoreBrandRequest;
-use App\Http\Requests\UpdateBrandRequest;
+use App\Http\Controllers\Controller;
+use App\Models\Texture;
+use App\Http\Requests\StoreTextureRequest;
+use App\Http\Requests\UpdateTextureRequest;
 
-class BrandController extends Controller
+class TextureController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class BrandController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreBrandRequest  $request
+     * @param  \App\Http\Requests\StoreTextureRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBrandRequest $request)
+    public function store(StoreTextureRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class BrandController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Brand  $brand
+     * @param  \App\Models\Texture  $texture
      * @return \Illuminate\Http\Response
      */
-    public function show(Brand $brand)
+    public function show(Texture $texture)
     {
         //
     }
@@ -53,10 +54,10 @@ class BrandController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Brand  $brand
+     * @param  \App\Models\Texture  $texture
      * @return \Illuminate\Http\Response
      */
-    public function edit(Brand $brand)
+    public function edit(Texture $texture)
     {
         //
     }
@@ -64,11 +65,11 @@ class BrandController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateBrandRequest  $request
-     * @param  \App\Models\Brand  $brand
+     * @param  \App\Http\Requests\UpdateTextureRequest  $request
+     * @param  \App\Models\Texture  $texture
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateBrandRequest $request, Brand $brand)
+    public function update(UpdateTextureRequest $request, Texture $texture)
     {
         //
     }
@@ -76,10 +77,10 @@ class BrandController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Brand  $brand
+     * @param  \App\Models\Texture  $texture
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Brand $brand)
+    public function destroy(Texture $texture)
     {
         //
     }

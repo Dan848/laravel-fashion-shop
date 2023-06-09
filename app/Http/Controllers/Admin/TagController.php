@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Texture;
-use App\Http\Requests\StoreTextureRequest;
-use App\Http\Requests\UpdateTextureRequest;
+use App\Http\Controllers\Controller;
+use App\Models\Tag;
+use App\Http\Requests\StoreTagRequest;
+use App\Http\Requests\UpdateTagRequest;
 
-class TextureController extends Controller
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class TextureController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTextureRequest  $request
+     * @param  \App\Http\Requests\StoreTagRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTextureRequest $request)
+    public function store(StoreTagRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class TextureController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Texture  $texture
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function show(Texture $texture)
+    public function show(Tag $tag)
     {
         //
     }
@@ -53,10 +54,10 @@ class TextureController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Texture  $texture
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function edit(Texture $texture)
+    public function edit(Tag $tag)
     {
         //
     }
@@ -64,11 +65,11 @@ class TextureController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateTextureRequest  $request
-     * @param  \App\Models\Texture  $texture
+     * @param  \App\Http\Requests\UpdateTagRequest  $request
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTextureRequest $request, Texture $texture)
+    public function update(UpdateTagRequest $request, Tag $tag)
     {
         //
     }
@@ -76,10 +77,10 @@ class TextureController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Texture  $texture
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Texture $texture)
+    public function destroy(Tag $tag)
     {
         //
     }
