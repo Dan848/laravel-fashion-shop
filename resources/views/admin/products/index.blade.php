@@ -24,11 +24,11 @@
                     @endphp
                     <td>{{ $product->created_at }}</td>
                     <td class="gap-2">
-                        <a class="btn btn-primary" href="{{ route('admin.products.show') }}"><i
+                        <a class="btn btn-primary" href="{{ route('admin.products.show', $product) }}"><i
                                 class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-secondary" href="{{ route('admin.products.edit') }}"><i
+                        <a class="btn btn-secondary" href="{{ route('admin.products.edit', $product) }}"><i
                                 class="fa-solid fa-pencil"></i></a>
-                        <form class="d-inline" action="{{ route('admin.products.destroy') }}" method="POST">
+                        <form class="d-inline" action="{{ route('admin.products.destroy', $product) }}" method="POST">
                             @method('DELETE')
                             @csrf
                             <button class="btn btn-danger delete-button" data-item-title="{{ $product->name }}"

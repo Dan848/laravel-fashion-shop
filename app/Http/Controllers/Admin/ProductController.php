@@ -23,7 +23,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('admin.products.create');
     }
 
     /**
@@ -43,7 +44,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+
+        return view('admin.products.show', compact('product'));
     }
 
     /**
@@ -74,6 +76,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect()->route('admin.products.index');
     }
 }
