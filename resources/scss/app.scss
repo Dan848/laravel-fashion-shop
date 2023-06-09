@@ -46,10 +46,6 @@ $fa-font-path: "../fonts/webfonts" !default;
 .img-show {
     max-width: 1000px;
 }
-#description label{
-    top: -8px;
-    left: 0px;
-}
 .form-floating{
     > label{
         top: -25px;
@@ -69,6 +65,10 @@ $fa-font-path: "../fonts/webfonts" !default;
         }
 
     }
+}
+#description-label{
+    top: -15px;
+    left: -2px;
 }
 
 //Imported CSS
