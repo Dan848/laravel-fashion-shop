@@ -3,7 +3,7 @@
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Admin\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +22,8 @@ Route::get('/', function () {
 });
 
 Route::middleware(["auth", "verified"])->name("admin.")->prefix("admin")->group(function () {
-    Route::get('/', [DashboardController::class])->name('dashboard');
-    Route::resource('products', ProductController::class);
+    Route::get('/', [DashboardController::class, "index"])->name('dashboard');
+    Route::resource('products', ProductController::class)->parameters(["products" => "products:slug"]);
 });
 
 // Route::get('/dashboard', function () {
