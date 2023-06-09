@@ -17,7 +17,7 @@
                     Dashboard
                 </div>
                 <div class="card-body"><a class="text-secondary" href="{{ route('admin.products.index') }}">Vedi tutti i
-                        Progetti</a></div>
+                        Prodotti</a></div>
                 <div class="card-footer small text-muted">Updated</div>
             </div>
         </div>
