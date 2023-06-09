@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Product;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class ProductSeeder extends Seeder
 {
@@ -19,7 +20,7 @@ class ProductSeeder extends Seeder
         $products = config("db_fashion.products");
         foreach($products as $product) {
             $newProduct = new Product();
-            $newProduct->old_id = $product["old_id"];
+            $newProduct->old_id = $product["id"];
             $newProduct->name = $product["name"];
             $newProduct->slug = Str::slug($newProduct->name, "-");
             $newProduct->image_link = $product["image_link"];
