@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 Route::middleware(["auth", "verified"])->name("admin.")->prefix("admin")->group(function () {
     Route::get('/', [DashboardController::class, "index"])->name('dashboard');
-    Route::resource('products', ProductController::class)->parameters(["products" => "products:slug"]);
+    Route::resource('products', ProductController::class)->parameters(["products" => "product:slug"]);
 });
 
 // Route::get('/dashboard', function () {

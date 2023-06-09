@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
 @section('title')
     Show
@@ -7,7 +7,7 @@
 @section('content')
     <div class="container mt-5 mb-3">
 
-        <h1 class="mb-4n text-center">{{ $product->name }}</h1>
+        <h1 class="mb-4n text-center">{{ $product->name }} Titolo</h1>
         <ol class="breadcrumb mb-4" style="order: -1;">
             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
             <li class="breadcrumb-item"><a href="{{ route('admin.products.index') }}">Progetti</a></li>
@@ -18,13 +18,13 @@
         </div>
         <p>{{ $product->description }}</p>
         <div class="row mt-5">
-            {{-- <div class="col">
+            <div class="col">
                 <p>Prezzo: <span class="fw-medium">{{ $product->price }}</span></p>
                 <p>Brand: <span class="fw-medium text-secondary">{{ $product->brand->name }}</span>
                 <p>
-            </div> --}}
+            </div>
             <div class="col text-end">
-                {{-- <p>Categoria: <span class="fw-medium">{{ $product->category->name }}</span></p> --}}
+                <p>Categoria: <span class="fw-medium">{{ $product->category->name }}</span></p>
             </div>
         </div>
         <div class="d-flex justify-content-center gap-3">
