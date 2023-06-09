@@ -60,9 +60,8 @@
                         <div class="col-12 col-md-6">
                             <div class="form-floating mb-3">
                                 <input id="price" type="number" step="0.01"
-                                    class="form-control @error('price') is-invalid @enderror" name="price"
-                                    value="{{ old('price') }}" required autofocus>
-                                <label for="price">Prezzo (Esempio: 8.99)</label>
+                                    class="form-control @error('price') is-invalid @enderror" name="price" required>
+                                <label for="price">Prezzo</label>
                             </div>
                         </div>
                     </div>
@@ -79,16 +78,17 @@
                     </div>
                     <!-- DESCRIPTION -->
                     <div class="form-floating mb-3">
-                        <label for="description">Descrizione</label>
-                        <textarea id="description" class="form-control h-100 @error('description') is-invalid @enderror" name="description"
-                            rows="4" autofocus></textarea>
-                    </div>
-                    <div class="form-floating mb-3">
                         <label for="old_id">id</label>
                         <input type="text" id="old_id"
                             class="form-control h-100 @error('old_id') is-invalid @enderror" name="old_id" rows="4"
                             autofocus>
                     </div>
+                    <div class="form-floating mb-3">
+                        <label for="description" id="description-label">Descrizione</label>
+                        <textarea id="description" class="form-control h-100 @error('description') is-invalid @enderror" name="description"
+                            rows="4" autofocus></textarea>
+                    </div>
+
                     <!-- SAVE and RESET -->
                     <div class="d-flex align-items-center justify-content-center mt-4 mb-0">
                         <button class="btn btn-secondary me-2" type="reset">Reset</button>

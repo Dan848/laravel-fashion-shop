@@ -49,3 +49,23 @@ deleteSubButton.forEach((button)=> {
         });
     })
 })
+
+window.onload = function() {
+    setPlaceholder();
+};
+
+var placeholder = document.getElementById("price");
+placeholder.addEventListener('focusin', clearInput);
+placeholder.addEventListener('focusout', setPlaceholder);
+
+function setPlaceholder() {
+    if (placeholder.value === "") {
+        placeholder.value = "9.99";
+    }
+}
+
+function clearInput() {
+    if (placeholder.value != "") {
+      placeholder.value = "";
+    }
+}
