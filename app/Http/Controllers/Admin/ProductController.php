@@ -36,8 +36,7 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request)
     {
         $data = $request->validated();
-        $data['slug'] = Str::slug($request->title, '-');
-
+        $data['slug'] = Str::slug($request->name, '-');
         if($request->hasFile("image_link")){
             $img_path = Storage::put ("uploads", $request->image_link);
             $data["image_link"] = asset("storage/" . $img_path);
@@ -84,7 +83,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        // if ($product->image_link) {
+        //     Storage::delete($product->image_link);
+        // }
         $product->delete();
-        return redirect()->route('admin.products.index');
+        return redirect()->route("admin.products.index")->with("message", "$product->name è stato eliminato con successo");
     }
 }

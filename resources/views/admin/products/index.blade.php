@@ -20,7 +20,7 @@
                         <div class="img-preview"><img class="img-fluid" src="{{ $product->image_link }}" alt=""></div>
                     </td>
                     @php
-                        
+
                     @endphp
                     <td>{{ $product->created_at }}</td>
                     <td class="gap-2">
@@ -28,9 +28,9 @@
                                 class="fa-solid fa-eye"></i></a>
                         <a class="btn btn-secondary" href="{{ route('admin.products.edit', $product->slug) }}"><i
                                 class="fa-solid fa-pencil"></i></a>
-                        <form class="d-inline" action="{{ route('admin.products.destroy', $product->slug) }}"
+                        <form class="d-inline" action="{{ route('admin.products.destroy', $product) }}"
                             method="POST">
-                            @method('DELETE')
+                            @method("DELETE")
                             @csrf
                             <button class="btn btn-danger delete-button" data-item-title="{{ $product->name }}"
                                 type="submit"><i class="fa-solid fa-eraser"></i></button>
@@ -41,4 +41,5 @@
         </tbody>
     </table>
     {{ $products->links('pagination::bootstrap-5') }}
+    @include("partials.delete-modal")
 @endsection
