@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -35,8 +36,12 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request)
     {
         $data = $request->validated();
-        $slug = Str::slug($request->title, '-');
-        $data['slug'] = $slug;
+        $data['slug'] = Str::slug($request->title, '-');
+
+        if($request->hasFile("image_link")){
+            $img_path = Storage::put ("uploads", $request->image_link);
+            $data["image_link"] = asset("storage/" . $img_path);
+        }
         $product = Product::create($data);
         return redirect()->route('admin.products.index', $product->slug);
     }

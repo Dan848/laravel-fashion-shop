@@ -59,7 +59,7 @@
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="form-floating mb-3">
-                                <input id="price" type="number"
+                                <input id="price" type="number" step="0.01"
                                     class="form-control @error('price') is-invalid @enderror" name="price"
                                     value="{{ old('price') }}" required autofocus>
                                 <label for="price">Prezzo (Esempio: 8.99)</label>
