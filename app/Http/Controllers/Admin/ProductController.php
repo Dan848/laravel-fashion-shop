@@ -38,8 +38,8 @@ class ProductController extends Controller
         $data = $request->validated();
         $data['slug'] = Str::slug($request->title, '-');
 
-        if($request->hasFile("image_link")){
-            $img_path = Storage::put ("uploads", $request->image_link);
+        if ($request->hasFile("image_link")) {
+            $img_path = Storage::put("uploads", $request->image_link);
             $data["image_link"] = asset("storage/" . $img_path);
         }
         $product = Product::create($data);
@@ -63,7 +63,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('admin.products.edit');
+        return view('admin.products.edit', compact('product'));
     }
 
     /**
@@ -74,7 +74,17 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $data = $request->validated();
+        $data["slug"] = Str::slug($request->name, "-");
+        if ($request->hasFile("image")) {
+            if ($product->image_link) {
+                Storage::delete($product->image_link);
+            }
+            $img_path = Storage::put("uploads", $request->image_link);
+            $data["image"] = asset("storage/" . $img_path);
+        }
+        $product->update($data);
+        return redirect()->route("admin.products.show", $product->slug)->with("message", "$product->name è stato modificato con successo");
     }
 
     /**
