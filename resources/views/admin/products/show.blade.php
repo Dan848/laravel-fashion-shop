@@ -14,22 +14,21 @@
             <li class="breadcrumb-item active">{{ $product->name }}</li>
         </ol>
         <div class="img-show d-flex justify-content-center mb-4">
-            <img class="img-fluid" src="{{ $product->image }}" alt="{{ $product->name }}">
+            <img class="img-fluid" src="{{ $product->image_link }}" alt="{{ $product->name }}">
         </div>
         <p>{{ $product->description }}</p>
         <div class="row mt-5">
-            <div class="col">
-                <p>Nome Repository: <span class="fw-medium">{{ $product->repo_name }}</span></p>
-                <p>Link Repository: <a href="{{ $product->repo_link }}"
-                        class="fw-medium text-secondary">{{ $product->repo_link }}</a>
+            {{-- <div class="col">
+                <p>Prezzo: <span class="fw-medium">{{ $product->price }}</span></p>
+                <p>Brand: <span class="fw-medium text-secondary">{{ $product->brand->name }}</span>
                 <p>
-            </div>
+            </div> --}}
             <div class="col text-end">
-                <p>Realizzato il: <span class="fw-medium">{{ $product->created_on }}</span></p>
+                {{-- <p>Categoria: <span class="fw-medium">{{ $product->category->name }}</span></p> --}}
             </div>
         </div>
         <div class="d-flex justify-content-center gap-3">
-            <a class="btn btn-secondary" href="{{ route('admin.products.edit', $product) }}"><i
+            <a class="btn btn-secondary" href="{{ route('admin.products.edit', $product->slug) }}"><i
                     class="fa-solid fa-pencil"></i></a>
             <form action="{{ route('admin.products.destroy', $product->slug) }}" method="POST">
                 @method('DELETE')
