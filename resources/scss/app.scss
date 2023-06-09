@@ -59,8 +59,8 @@ body{
         border-bottom: 2px solid $primary;
         border-radius: 0;
         &:focus{
-            border: 0.25rem solid $primary;
-            box-shadow: none;
+            border: 0 solid $primary;
+            box-shadow: 0 0 1rem 0.25rem $primary;
         }
 
     }
