@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +21,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(["auth", "verified"])->name("admin.")->prefix("admin")->group(function(){
-    Route::get("/", function () { return view('admin.dashboard');})->name("dashboard");
+Route::middleware(["auth", "verified"])->name("admin.")->prefix("admin")->group(function () {
+    Route::get('/', [DashboardController::class])->name('dashboard');
+    Route::resource('products', ProductController::class);
 });
 
 // Route::get('/dashboard', function () {
@@ -33,4 +36,8 @@ Route::middleware(["auth", "verified"])->name("admin.")->prefix("admin")->group(
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
+
+Route::fallback(function () {
+    return redirect()->route('admin.dashboard');
+});
