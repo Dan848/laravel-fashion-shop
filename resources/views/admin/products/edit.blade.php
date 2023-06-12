@@ -1,106 +1,96 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
 @section('title')
-    Edit
+    Create
 @endsection
 
 @section('content')
     <div class="container mb-5">
-        <h4 class="mt-5 text-center">
-            Modifica
-        </h4>
-        <h2 class="mb-4 text-center">
-            {{ $product->name }}
+        <h2 class="mt-5 mb-4 text-center">
+            Modifica prodotto "{{ $product->name }}"
         </h2>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
             <li class="breadcrumb-item"><a href="{{ route('admin.products.index') }}">Progetti</a></li>
-            <li class="breadcrumb-item">Modifica {{ $product->name }}</li>
+            <li class="breadcrumb-item active">Aggiungi</li>
         </ol>
     </div>
+
     <div class="container">
         <div class="row">
             <div class="col">
-                <form class="container" method="POST" action="{{ route('admin.products.update', $product->slug) }}"
+                <form class="container" method="POST" action="{{ route('admin.products.update', $product) }}"
                     enctype="multipart/form-data">
-                    @method('PUT')
                     @csrf
+                    @method('PUT')
                     {{-- Errors Section --}}
                     @if ($errors->any())
                         <div class="alert alert-danger mt-2">
-                            @error('repo_name')
-                                <p>{{ $message }}</p>
-                            @enderror
 
                             @error('name')
                                 <p>{{ $message }}</p>
                             @enderror
 
-                            @error('repo_link')
+                            @error('price')
                                 <p>{{ $message }}</p>
                             @enderror
 
-                            @error('image')
-                                <p>{{ $message }}</p>
-                            @enderror
-
-                            @error('created_on')
+                            @error('image_link')
                                 <p>{{ $message }}</p>
                             @enderror
 
                             @error('description')
                                 <p>{{ $message }}</p>
                             @enderror
+
+                            @error('old_id')
+                                <p>{{ $message }}</p>
+                            @enderror
                         </div>
                     @endif
-                    <!-- NAME -->
+                    <!-- NAME & PRICE -->
                     <div class="row">
-                        <div class="col-12 col-md-6">
-                            <div class="form-floating mb-3">
-                                <input id="repo_name" type="text"
-                                    class="form-control @error('repo_name') is-invalid @enderror" name="repo_name"
-                                    value="{{ $product->repo_name }}" required autofocus>
-                                <label for="repo_name">Nome della Repository</label>
-                            </div>
-                        </div>
                         <div class="col-12 col-md-6">
                             <div class="form-floating mb-3">
                                 <input id="name" type="text"
-                                    class="form-control @error('name') is-invalid @enderror" name="name"
-                                    value="{{ $product->name }}" required autofocus>
-                                <label for="name">Nome del progetto</label>
+                                    class="form-control edit-form @error('name') is-invalid @enderror" name="name"
+                                    value="{{ $product->name }}" required>
+                                <label for="name">Nome del prodotto</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-floating mb-3">
+                                <input id="price" type="number" step="0.01"
+                                    class="form-control edit-form @error('price') is-invalid @enderror" name="price"
+                                    value="{{ $product->price }}" required>
+                                <label for="price">Prezzo</label>
                             </div>
                         </div>
                     </div>
-                    <!-- LINK REPO -->
-                    <div class="form-floating mb-3">
-                        <input id="repo_link" type="url" class="form-control @error('repo_link') is-invalid @enderror"
-                            name="repo_link" value="{{ $product->repo_link }}" required autofocus>
-                        <label for="repo_link">Link della Repo su Git Hub</label>
-                    </div>
-                    <!-- IMAGE & DATA -->
+                    <!-- IMAGE -->
                     <div class="row">
-                        <div class="col-12 col-md-6">
+                        <div class="col-12">
                             <div class="form-floating mb-3">
-                                <input id="image" type="file"
-                                    class="form-control @error('image') is-invalid @enderror" name="image" autofocus>
-                                <label class="mb-5" for="image">Anteprima Immagine</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-floating mb-3">
-                                <input id="created_on" type="date"
-                                    class="form-control @error('created_on') is-invalid @enderror" name="created_on"
-                                    value="{{ $product->created_on }}" required autofocus>
-                                <label for="created_on">Realizzato il</label>
+                                <input id="image_link" type="file"
+                                    class="form-control edit-form @error('image_link') is-invalid @enderror"
+                                    value="{{ $product->image_link }} "name="image_link">
+                                <label class="mb-5" for="image_link">Anteprima Immagine</label>
                             </div>
                         </div>
                     </div>
                     <!-- DESCRIPTION -->
                     <div class="form-floating mb-3">
-                        <textarea id="description" class="form-control h-100 @error('description') is-invalid @enderror" name="description"
-                            rows="4" cols="3" autofocus>{{ $product->description }}</textarea>
+                        <label for="old_id">id</label>
+                        <input type="text" id="old_id"
+                            class="form-control h-100 edit-form @error('old_id') is-invalid @enderror" name="old_id"
+                            rows="4" value="{{ $product->old_id }}">
                     </div>
+                    <div class="form-floating mb-3">
+                        <label for="description" id="description-label">Descrizione</label>
+                        <textarea id="description" class="form-control edit-form h-100 @error('description') is-invalid @enderror"
+                            name="description" rows="4">{{ $product->description }}"</textarea>
+                    </div>
+
                     <!-- SAVE and RESET -->
                     <div class="d-flex align-items-center justify-content-center mt-4 mb-0">
                         <button class="btn btn-secondary me-2" type="reset">Reset</button>

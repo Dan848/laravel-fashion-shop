@@ -50,13 +50,22 @@ deleteSubButton.forEach((button)=> {
     })
 })
 
-window.onload = function() {
-    setPlaceholder();
+window.onload = function () {
+    const inputs = document.getElementById("price");
+    if (inputs) {
+       setPlaceholder();
+    }
+
 };
 
-var placeholder = document.getElementById("price");
-placeholder.addEventListener('focusin', clearInput);
+const placeholder = document.getElementById("price");
+
+if(placeholder){
+    placeholder.addEventListener('focusin', clearInput);
 placeholder.addEventListener('focusout', setPlaceholder);
+}
+
+
 
 function setPlaceholder() {
     if (placeholder.value === "") {

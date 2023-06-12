@@ -7,7 +7,7 @@
 @section('content')
     <div class="container mt-5 mb-3">
 
-        <h1 class="mb-4n text-center">{{ $product->name }} Titolo</h1>
+        <h1 class="mb-4n text-center">{{ $product->name }}</h1>
         <ol class="breadcrumb mb-4" style="order: -1;">
             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
             <li class="breadcrumb-item"><a href="{{ route('admin.products.index') }}">Progetti</a></li>
