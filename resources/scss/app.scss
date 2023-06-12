@@ -28,6 +28,9 @@ header,footer{
 .btn-create{
     background-color: $secondary;
     border-radius: 35px;
+    &:hover{
+        background-color: $secondary;
+    }
 
 }
 

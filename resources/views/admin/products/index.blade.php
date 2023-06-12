@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="container">
-        <a class="btn  mx-auto btn-sm btn-create" href="{{ route('admin.products.create') }}">Aggiungi il tuo prodotto!</a>
+        <button class="mx-auto btn  btn-sm btn-create" href="{{ route('admin.products.create') }}">Aggiungi il tuo
+            prodotto!</button>
         <h1>Ecco i prodotti </h1>
 
         <table class="table">
