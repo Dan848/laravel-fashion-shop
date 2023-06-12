@@ -14,6 +14,17 @@ $fa-font-path: "../fonts/webfonts" !default;
 // body{
 //     font-family: 'Roboto', sans-serif;
 // }
+
+// App style
+
+main{
+    height:80vh;
+}
+
+header,footer{
+    height:10vh;
+}
+
 .btn-create{
     background-color: $secondary;
     border-radius: 35px;
@@ -220,7 +231,6 @@ margin-right: 0.5rem;
 }
 .sb-topnav {
 padding-left: 0;
-height: 56px;
 z-index: 1039;
 }
 .sb-topnav.navbar-dark #sidebarToggle {
