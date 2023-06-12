@@ -24,14 +24,24 @@ main{
 header,footer{
     height:10vh;
 }
-
-.btn-create{
-    background-color: $secondary;
+.my-btn{
+    flex: 1 1 auto;
+    padding: .8rem;
+    margin: 2rem, 0;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    font-weight: bold;
     border-radius: 35px;
     &:hover{
-        background-color: $secondary;
+        background-position: right center;
     }
-
+}
+.my-btn-gradient{
+    background-image: linear-gradient(to right, $primary 0%, $secondary 51%, $primary 100%);
 }
 
 .hover-invert{

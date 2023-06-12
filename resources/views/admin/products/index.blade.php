@@ -2,8 +2,10 @@
 
 @section('content')
     <div class="container">
-        <a class="mx-auto btn m-4 btn-sm btn-create" href="{{ route('admin.products.create') }}">Aggiungi il tuo
-            prodotto!</a>
+        <div class="my-4 text-end">
+            <a class="my-btn my-btn-gradient" href="{{ route('admin.products.create') }}">Aggiungi un nuovo prodotto</a>
+        </div>
+
         <h1>Ecco i prodotti </h1>
 
         <table class="table">
