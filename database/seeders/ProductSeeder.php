@@ -40,8 +40,8 @@ class ProductSeeder extends Seeder
         $contents = file_get_contents($url);
         $temp_name = substr($url, strrpos($url, '/') + 1);
         $name = substr($temp_name, 0, strpos($temp_name, '?')) . '.jpg';
-        $path = 'images/' . $name;
-        Storage::put('images/' . $name, $contents);
+        $path = '/storage/images/' . $name;
+        Storage::put('/storage/images/' . $name, $contents);
         return $path;
     }
 }
