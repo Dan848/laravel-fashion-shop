@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Texture;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Support\Str;
@@ -16,7 +19,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(5);
+        $products = Product::paginate(10);
         return view('admin.products.index', compact('products'));
     }
 
@@ -25,7 +28,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.products.create');
+        $brands = Brand::all();
+        $categories = Category::all();
+        $textures = Texture::all();
+        return view('admin.products.create', compact("brands", "categories", "textures"));
     }
 
     /**
@@ -43,7 +49,13 @@ class ProductController extends Controller
             $data["image_link"] = asset("storage/" . $img_path);
         }
         $product = Product::create($data);
-        return redirect()->route('admin.products.index', $product->slug);
+
+            //For many to many
+            //Attach Foreign data from another table
+            // if ($request->has("namessss")){
+            //     $product->funtionsss()->attach($request->namessss);
+            // }
+        return redirect()->route('admin.products.show', $product->slug);
     }
 
     /**
@@ -63,7 +75,10 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('admin.products.edit', compact('product'));
+        $brands = Brand::all();
+        $categories = Category::all();
+        $textures = Texture::all();
+        return view('admin.products.edit', compact("brands", "categories", "product", "textures"));
     }
 
     /**
@@ -76,15 +91,23 @@ class ProductController extends Controller
     {
         $data = $request->validated();
         $data["slug"] = Str::slug($request->name, "-");
-        if ($request->hasFile("image")) {
+        if ($request->hasFile("image_link")){
             if ($product->image_link) {
                 Storage::delete($product->image_link);
             }
             $img_path = Storage::put("uploads", $request->image_link);
-            $data["image"] = asset("storage/" . $img_path);
+            $data["image_link"] = asset("storage/" . $img_path);
         }
         $product->update($data);
-        return redirect()->route("admin.products.show", $product->slug)->with("message", "$product->name è stato modificato con successo");
+            // MANY TO MANY
+            //Attach Foreign data from another table
+            // if ($request->has("namesss")){
+            //     $product->functionsss()->sync($request->namess);
+            // }
+            // else {
+            //     $product->sync([]);
+            // }
+        return redirect()->route("admin.products.show",$product->slug)->with("message", "$product->name è stato modificato con successo");
     }
 
     /**
@@ -94,9 +117,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        // if ($product->image_link) {
-        //     Storage::delete($product->image_link);
-        // }
+            if ($product->image_link) {
+            Storage::delete($product->image_link);
+            }
         $product->delete();
         return redirect()->route("admin.products.index")->with("message", "$product->name è stato eliminato con successo");
     }
