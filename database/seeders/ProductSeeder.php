@@ -23,7 +23,7 @@ class ProductSeeder extends Seeder
             $newProduct->old_id = $product["id"];
             $newProduct->name = $product["name"];
             $newProduct->slug = Str::slug($newProduct->name, "-");
-            $newProduct->image_link = $product["image_link"];
+            $newProduct->image_link = ProductSeeder::storeimage($product['api_featured_image']);
             $newProduct->description = $product["description"];
             $newProduct->price = $product["price"];
             $newProduct->brand_id = $product["brand_id"];
@@ -32,5 +32,16 @@ class ProductSeeder extends Seeder
             $newProduct->name = $product["name"];
             $newProduct->save();
         }
+    }
+
+    public static function storeimage($img)
+    {
+        $url = 'https:' . $img;
+        $contents = file_get_contents($url);
+        $temp_name = substr($url, strrpos($url, '/') + 1);
+        $name = substr($temp_name, 0, strpos($temp_name, '?')) . '.jpg';
+        $path = 'images/' . $name;
+        Storage::put('images/' . $name, $contents);
+        return $path;
     }
 }

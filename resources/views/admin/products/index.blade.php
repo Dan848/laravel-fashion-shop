@@ -1,8 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Ecco i prodotti </h1>
-
+<div class="container-fluid px-4">
+    <h1 class="mt-4 text-center">Lista Prodotti</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="{{ route("admin.dashboard") }}">Dashboard</a></li>
+        <li class="breadcrumb-item active">Prodotti</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <div><i class="fa-solid fa-gem me-1"></i>Prodotti</div>
+            <a class="btn btn-primary fw-medium d-flex align-items-center" href="{{ route("admin.products.create") }}"><i class="fa-regular fa-plus me-1 text-danger fs-5 vertical-center fw-bolder"></i>Aggiungi</a>
+        </div>
+        <div class="card-body">
     <table class="table">
         <thead>
             <tr>
@@ -40,6 +50,9 @@
             @endforeach
         </tbody>
     </table>
-    {{ $products->links('pagination::bootstrap-5') }}
+    {{$products->links("vendor.pagination.bootstrap-5")}}
+</div>
+</div>
+</div>
     @include("partials.delete-modal")
 @endsection

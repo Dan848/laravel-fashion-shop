@@ -28,7 +28,7 @@ $fa-font-path: "../fonts/webfonts" !default;
     transition: transform 0.3s ease;
     backface-visibility: hidden;
     &:hover{
-        transform: scale(1.2);
+        transform: scale(1.15);
         backface-visibility: hidden;
     }
 }
@@ -40,7 +40,7 @@ $fa-font-path: "../fonts/webfonts" !default;
 
 //Dashboard
 .img-preview{
-    max-width: 300px;
+    max-width: 100px;
 }
 
 .img-show {
@@ -48,8 +48,11 @@ $fa-font-path: "../fonts/webfonts" !default;
 }
 .form-floating{
     > label{
-        top: -25px;
-        left: -8px;
+        top: -5px;
+        left: -0px;
+        &::after{
+            background-color: transparent!important;
+        }
     }
 
     .form-control {
