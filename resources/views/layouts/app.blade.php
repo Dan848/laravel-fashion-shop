@@ -19,7 +19,7 @@
         <nav class="sb-topnav navbar navbar-expand navbar-light bg-primary">
             <!-- Navbar Brand-->
             <a class="navbar-brand ms-3 p-2 fw-medium hover-scale" href="{{ url('/') }}">Project
-            <span><img src="/img/logo.png" alt="logo" width="25px" height="25px"></span>
+            <span><img src="/images/logo/cute_bug.png" alt="logo" width="25px" height="25px"></span>
             </a>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
