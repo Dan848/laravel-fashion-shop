@@ -17,12 +17,8 @@ $fa-font-path: "../fonts/webfonts" !default;
 
 // App style
 
-main{
-    height:80vh;
-}
-
-header,footer{
-    height:10vh;
+a {
+    color: $secondary;
 }
 
 .btn-create{
@@ -234,6 +230,7 @@ margin-right: 0.5rem;
 }
 .sb-topnav {
 padding-left: 0;
+height: 56px;
 z-index: 1039;
 }
 .sb-topnav.navbar-dark #sidebarToggle {
