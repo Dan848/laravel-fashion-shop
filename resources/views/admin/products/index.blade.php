@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="h-100 d-flex flex-column align-items-center justify-content-center">
+
     <h1>Ecco i prodotti </h1>
 
-    <table class="table">
+    <table class="table text-center">
         <thead>
             <tr>
                 <th scope="col">Nome</th>
@@ -42,4 +44,5 @@
     </table>
     {{ $products->links('pagination::bootstrap-5') }}
     @include("partials.delete-modal")
+</div>
 @endsection
