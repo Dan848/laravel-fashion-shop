@@ -27,7 +27,7 @@
                 <tr>
                     <th scope="row">{{ $product->name }}</th>
                     <td>
-                        <div class="img-preview"><img class="img-fluid" src="{{ $product->image_link }}" alt=""></div>
+                        <a href="{{ route("admin.products.show", $product) }}" class="img-preview d-block"><img class="img-fluid" src="{{ $product->image_link }}" alt="{{ $product->name }}"></a>
                     </td>
                     <td class="text-capitalize">{{ $product->brand->name }}&#8482;</td>
                     <td class="gap-2">
